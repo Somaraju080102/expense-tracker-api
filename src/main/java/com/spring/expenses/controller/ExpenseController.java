@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.expenses.dto.ExpensesDTO;
 import com.spring.expenses.entity.ExpensesCategory;
 import com.spring.expenses.entity.ExpensesEntity;
 import com.spring.expenses.service.ExpensesService;
@@ -31,9 +32,9 @@ public class ExpenseController {
 	}
 	
 	@PostMapping("/expenses")
-	public ResponseEntity<ExpensesEntity> sexp(@RequestBody ExpensesEntity expensesEntity){
+	public ResponseEntity<ExpensesEntity> sexp(@RequestBody ExpensesDTO expensesDTO){
 		
-		ExpensesEntity saveExpenses = expensesService.saveExpenses(expensesEntity);
+		ExpensesEntity saveExpenses = expensesService.saveExpenses(expensesDTO);
 		
 		return ResponseEntity.ok(saveExpenses);
 	}

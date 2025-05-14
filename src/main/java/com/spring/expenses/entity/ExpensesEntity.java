@@ -3,6 +3,8 @@ package com.spring.expenses.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class ExpensesEntity {
 	
 	
 	@ManyToOne
+	@JsonIgnore
 	private ExpensesCategory category;
 
 
