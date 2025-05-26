@@ -1,5 +1,6 @@
 package com.spring.expenses.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,29 @@ public class ExpensesService {
 		
 		
 	}
+
+	public List<ExpensesEntity> getExpenses() {
+		
+		List<ExpensesEntity> all = expensesRepo.findAll();
+		
+		
+		return all;
+		
+	}
+
+	public ExpensesEntity gexpid(Long id) {
+		
+		Optional<ExpensesEntity> byId = expensesRepo.findById(id);
+		
+		if(byId==null) {
+			return null;
+		}
+		else {
+			return byId.get();
+		}
+		
+	}
+
 	
 	
 	
