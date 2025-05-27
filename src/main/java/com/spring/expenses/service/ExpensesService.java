@@ -30,7 +30,7 @@ public class ExpensesService {
 		    return categoryRepo.findByName(name)
 		            .orElseGet(() -> {
 		                ExpensesCategory newCat = new ExpensesCategory();
-		                newCat.setName(name); // storing clean name
+		                newCat.setName(name); 
 		                return categoryRepo.save(newCat);
 		            });		
 		
@@ -42,7 +42,7 @@ public class ExpensesService {
 	    if (catId == null) {
 	        throw new IllegalArgumentException("Category ID must not be null");
 	    }
-
+	    
 	    ExpensesCategory category = categoryRepo.findById(catId)
 	        .orElseThrow(() -> new IllegalArgumentException("Category not found with id: " + catId));
 
@@ -77,6 +77,33 @@ public class ExpensesService {
 		else {
 			return byId.get();
 		}
+		
+	}
+
+	public boolean deleteExp(Long id) {
+		// TODO Auto-generated method stub
+		
+		Optional<ExpensesEntity> byId = expensesRepo.findById(id);
+		
+		
+		if(!byId.isEmpty()){
+			expensesRepo.deleteById(id);
+		return true;
+		}
+		
+////		ExpensesEntity expensesEntity = byId.get();
+////		
+////		Long id2 = expensesEntity.getId();
+//		
+//		System.out.println("Deleted value"+id2);
+//		
+//		if(expensesEntity.getId()!=null) {
+//			expensesRepo.deleteById(id);
+//			return true;
+//		}
+		
+		
+		return false;
 		
 	}
 
